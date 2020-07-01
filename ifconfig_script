@@ -1,0 +1,20 @@
+#!/bin/bash
+
+export S_TIME_FORMAT=ISO
+
+file="./data/network.dump"
+
+
+echo "=======================================================================================" > $file
+echo "$(date +%T)">> $file
+ifconfig >> $file
+
+while true
+do
+sleep $1
+echo "=======================================================================================" >> $file
+echo "$(date +%T)">> $file
+echo " ">> $file
+ifconfig >> $file
+
+done

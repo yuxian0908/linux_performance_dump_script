@@ -1,0 +1,19 @@
+#!/bin/bash
+
+export S_TIME_FORMAT=ISO
+
+file="./data/io.dump"
+
+iostat | tail +5 | head -n -2 > $file
+echo "$(date +%T)">> $file
+echo " ">> $file
+
+while true
+do
+sleep $1
+
+iostat | tail +7 |head -n -2 >> $file
+echo "$(date +%T)">> $file
+echo " ">> $file
+
+done

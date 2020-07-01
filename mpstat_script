@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export S_TIME_FORMAT=ISO
+file="./data/cpu.dump"
+
+mpstat -P ALL | tail +2 > $file
+
+while true
+do
+sleep $1
+echo " " >> $file
+mpstat -P ALL | tail +2 >> $file
+
+done
